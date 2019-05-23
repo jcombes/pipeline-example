@@ -8,9 +8,7 @@ stages:
       pushRemote: true
       registry: avazuretest.azurecr.io
   when:
-    branch:
-      include:
-      - master
+    branch: {}
     event:
       include:
       - push
