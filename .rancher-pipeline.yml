@@ -1,9 +1,12 @@
 stages:
-- name: Compile
+- name: Build
   steps:
-  - runScriptConfig:
-      image: java:8
-      shellScript: java --version
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: avazuretest.azurecr.io/pipeline-test
+      pushRemote: true
+      registry: avazuretest.azurecr.io
   when:
     branch:
       include:
@@ -18,3 +21,4 @@ notification:
     notifier: c-jxx5b:n-xzk2m
   condition:
   - Success
+  - Failed
