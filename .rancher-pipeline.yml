@@ -1,0 +1,20 @@
+stages:
+- name: Compile
+  steps:
+  - runScriptConfig:
+      image: java:8
+      shellScript: java --version
+  when:
+    branch:
+      include:
+      - master
+    event:
+      include:
+      - push
+timeout: 60
+notification:
+  recipients:
+  - recipient: '#azure-rancher'
+    notifier: c-jxx5b:n-xzk2m
+  condition:
+  - Success
